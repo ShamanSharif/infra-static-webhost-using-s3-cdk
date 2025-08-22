@@ -1,294 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Deployment Successful</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Rubik:wght@800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background: #ffde59;
-        min-height: 100vh;
-        font-family: "Space Grotesk", sans-serif;
-        padding: 20px;
-        line-height: 1.6;
-      }
-
-      .container {
-        max-width: 1000px;
-        margin: 40px auto;
-        position: relative;
-      }
-
-      .success-banner {
-        background: #ff4dff;
-        padding: 30px;
-        border: 3px solid black;
-        box-shadow: 8px 8px 0 black;
-        margin-bottom: 40px;
-        transform: rotate(-1deg);
-      }
-
-      .success-banner h1 {
-        font-family: "Rubik", sans-serif;
-        font-size: 4rem;
-        color: black;
-        text-transform: uppercase;
-        line-height: 1;
-        text-shadow: 3px 3px 0 white;
-      }
-
-      .main-content {
-        background: white;
-        border: 3px solid black;
-        box-shadow: 8px 8px 0 black;
-        padding: 40px;
-        transform: rotate(1deg);
-      }
-
-      .section {
-        margin-bottom: 40px;
-        padding: 30px;
-        background: #72ff80;
-        border: 3px solid black;
-        box-shadow: 6px 6px 0 black;
-        transform: rotate(-0.5deg);
-      }
-
-      .section:nth-child(2) {
-        background: #54c5ff;
-        transform: rotate(0.5deg);
-      }
-
-      .section:nth-child(3) {
-        background: #ff9254;
-        transform: rotate(-0.8deg);
-      }
-
-      h2 {
-        font-family: "Rubik", sans-serif;
-        font-size: 2rem;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-      }
-
-      .steps-list {
-        list-style: none;
-      }
-
-      .steps-list li {
-        margin-bottom: 15px;
-        padding: 15px;
-        background: white;
-        border: 2px solid black;
-        box-shadow: 4px 4px 0 black;
-        font-weight: bold;
-        transform: rotate(-0.5deg);
-        transition: transform 0.2s ease;
-      }
-
-      .steps-list li:hover {
-        transform: rotate(0.5deg) translateX(5px);
-      }
-
-      .pro-tip {
-        background: #ff3d3d;
-        color: white;
-        padding: 20px;
-        border: 3px solid black;
-        box-shadow: 6px 6px 0 black;
-        margin-top: 30px;
-        transform: rotate(0.5deg);
-      }
-
-      .pro-tip strong {
-        display: block;
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
-
-      /* Brutalist buttons */
-      .button {
-        display: inline-block;
-        padding: 15px 30px;
-        background: #54c5ff;
-        border: 3px solid black;
-        box-shadow: 5px 5px 0 black;
-        font-family: "Space Grotesk", sans-serif;
-        font-weight: bold;
-        font-size: 1.2rem;
-        cursor: pointer;
-        transform: rotate(-1deg);
-        transition: all 0.2s ease;
-        text-decoration: none;
-        color: black;
-      }
-
-      .button:hover {
-        transform: rotate(1deg) translateY(-2px);
-        box-shadow: 7px 7px 0 black;
-      }
-
-      .button:active {
-        transform: translate(5px, 5px);
-        box-shadow: 0 0 0 black;
-      }
-
-      #theme-toggle {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: #ff3d3d;
-        color: white;
-        z-index: 100;
-      }
-
-      /* Dark mode styles */
-      body.dark {
-        background: #1a1a1a;
-        color: white;
-      }
-
-      body.dark .main-content {
-        background: #2d2d2d;
-        border-color: white;
-        box-shadow: 8px 8px 0 white;
-      }
-
-      body.dark .section {
-        border-color: white;
-        box-shadow: 6px 6px 0 white;
-      }
-
-      body.dark .steps-list li {
-        background: #2d2d2d;
-        border-color: white;
-        box-shadow: 4px 4px 0 white;
-        color: white;
-      }
-
-      body.dark .success-banner {
-        border-color: white;
-        box-shadow: 8px 8px 0 white;
-      }
-
-      body.dark .success-banner h1 {
-        color: white;
-        text-shadow: 3px 3px 0 black;
-      }
-
-      body.dark .button,
-      body.dark .pro-tip {
-        border-color: white;
-        box-shadow: 5px 5px 0 white;
-      }
-
-      body.dark .button {
-        color: white;
-      }
-
-      @media (max-width: 768px) {
-        .success-banner h1 {
-          font-size: 2.5rem;
-        }
-
-        .main-content {
-          padding: 20px;
-        }
-
-        .section {
-          padding: 20px;
-          margin-bottom: 30px;
-        }
-
-        h2 {
-          font-size: 1.5rem;
-        }
-
-        .button {
-          padding: 10px 20px;
-          font-size: 1rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <button class="button" id="theme-toggle" onclick="toggleTheme()">
-      SWITCH THEME
-    </button>
-
-    <div class="container">
-      <div class="success-banner">
-        <h1>BOOM! 🚀<br />IT'S ALIVE!</h1>
-      </div>
-
-      <div class="main-content">
-        <div class="section">
-          <h2>🎯 MISSION ACCOMPLISHED</h2>
-          <p>
-            Your website just dropkicked its way onto the internet! It's ready
-            to punch through the digital noise and make its mark.
-          </p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Modern Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Brand</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
+    </nav>
 
-        <div class="section">
-          <h2>🔥 NEXT MOVES</h2>
-          <ul class="steps-list">
-            <li>
-              👉 BLAST THROUGH YOUR PAGES - Test everything like you're trying
-              to break it
-            </li>
-            <li>
-              👉 CLAIM YOUR DOMAIN - Plant your flag in the digital ground
-            </li>
-            <li>👉 LOCK IT DOWN - Slap some HTTPS security on that bad boy</li>
-            <li>👉 SPEED CHECK - Make it zoom like a rocket</li>
-            <li>👉 BACKUP PLAN - Because stuff happens</li>
-          </ul>
-
-          <div class="pro-tip">
-            <strong>PRO TIP! 💥</strong>
-            Get those analytics tools running NOW. Knowledge is power, and power
-            is EVERYTHING in the digital world!
-          </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to the Future</h1>
+                <p class="hero-description">
+                    Discover amazing possibilities with our innovative solutions. 
+                    We help businesses grow and succeed in the digital age.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">Get Started</button>
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">
+                    <i class="fas fa-rocket"></i>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="section">
-          <h2>🤘 NEED A HAND?</h2>
-          <p>
-            Our squad's got your back! Hit up the docs or give our support team
-            a shout. We're here to help you CRUSH IT!
-          </p>
-          <a
-            href="mailto:hello@shamansharif.com"
-            class="button"
-            style="margin-top: 20px"
-            >GET HELP</a
-          >
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        We are a passionate team dedicated to creating exceptional digital experiences. 
+                        Our mission is to help businesses thrive in the modern world through innovative 
+                        technology and creative solutions.
+                    </p>
+                    <p>
+                        With years of experience and a commitment to excellence, we deliver results 
+                        that exceed expectations and drive real business growth.
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="stat">
+                        <h3>1000+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat">
+                        <h3>24/7</h3>
+                        <p>Support</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+    </section>
 
-    <script>
-      function toggleTheme() {
-        document.body.classList.toggle("dark");
-        const isDark = document.body.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
-      }
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies and best practices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Apps</h3>
+                    <p>Native and cross-platform mobile applications for iOS and Android devices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Beautiful and intuitive user interfaces designed for optimal user experience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and deployment solutions for your applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      // Check saved theme
-      if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark");
-      }
-    </script>
-  </body>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@example.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>123 Business Street, City, State 12345</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Brand</h3>
+                    <p>Creating amazing digital experiences for modern businesses.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Mobile Apps</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Brand. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

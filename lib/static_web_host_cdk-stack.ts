@@ -16,8 +16,14 @@ export class StaticWebHostCdkStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props: StaticWebHostCdkStackProps) {
     super(scope, id, props);
 
+    // Add tags for resource management
+    cdk.Tags.of(this).add("Project", "Website");
+    cdk.Tags.of(this).add("Environment", "Development");
+
     const bucket = new s3.Bucket(this, props.s3BucketName, {
       accessControl: s3.BucketAccessControl.PRIVATE,
+      blockPublicAccess: s3.BlockPublicAccess.BLOCK_ALL,
+      removalPolicy: cdk.RemovalPolicy.DESTROY, // For development - use RETAIN for production
     });
 
     new s3Deployment.BucketDeployment(
@@ -47,12 +53,38 @@ export class StaticWebHostCdkStack extends cdk.Stack {
         defaultRootObject: "index.html",
         defaultBehavior: {
           origin: bucketOrigin,
+          viewerProtocolPolicy: cloudFront.ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+          cachePolicy: cloudFront.CachePolicy.CACHING_OPTIMIZED,
+          compress: true,
         },
+        errorResponses: [
+          {
+            httpStatus: 404,
+            responseHttpStatus: 200,
+            responsePagePath: "/index.html",
+          },
+          {
+            httpStatus: 403,
+            responseHttpStatus: 200,
+            responsePagePath: "/index.html",
+          },
+        ],
       }
     );
 
     new cdk.CfnOutput(this, "WebsiteURL", {
-      value: distribution.distributionDomainName,
+      value: `https://${distribution.distributionDomainName}`,
+      description: "Website URL",
+    });
+
+    new cdk.CfnOutput(this, "DistributionId", {
+      value: distribution.distributionId,
+      description: "CloudFront Distribution ID",
+    });
+
+    new cdk.CfnOutput(this, "BucketName", {
+      value: bucket.bucketName,
+      description: "S3 Bucket Name",
     });
   }
 }
